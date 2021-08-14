@@ -1,9 +1,10 @@
-<div class="d-flex justify-content-center align-items-center" style="height:100px">
-  <div class="container">
-    <div class="row">
-      <div class="col text-center">123</div>
-      <div class="col text-center">123</div>
-      <div class="col text-center">123</div>
-    </div>
-  </div>
-</div>
+<h1>Angular Router App</h1>
+<!-- This nav gives you links to click, which tells the router which route to use (defined in the routes constant in  AppRoutingModule) -->
+<nav>
+  <ul>
+    <li><a routerLink="/hello" routerLinkActive="active">First Component</a></li>
+    <li><a routerLink="/hi" routerLinkActive="active">Second Component</a></li>
+  </ul>
+</nav>
+<!-- The routed views render in the <router-outlet>-->
+<router-outlet></router-outlet>
