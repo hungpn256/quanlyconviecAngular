@@ -11,12 +11,14 @@ import { StoreModule } from '@ngrx/store';
 import { HelloModule} from './components/hello/hello.module';
 import { TaskComponent } from './task/task.component';
 import { CreateTaskComponent } from './create-task/create-task.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TaskComponent,
     CreateTaskComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
