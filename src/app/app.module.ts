@@ -9,12 +9,14 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { StoreModule } from '@ngrx/store';
 import { HelloModule} from './components/hello/hello.module';
-import { HiComponent } from './components/hi/hi.component';
+import { TaskComponent } from './task/task.component';
+import { CreateTaskComponent } from './create-task/create-task.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HiComponent,
+    TaskComponent,
+    CreateTaskComponent,
   ],
   imports: [
     BrowserModule,
