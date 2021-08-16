@@ -1,6 +1,6 @@
 import { Component, ElementRef, AfterViewInit, ViewChild } from '@angular/core';
 import { fromEvent } from 'rxjs';
-import { filter, debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
+import { filter, debounceTime, distinctUntilChanged, tap, pluck } from 'rxjs/operators';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -16,11 +16,8 @@ export class HomeComponent implements AfterViewInit {
       .pipe(
         debounceTime(1500),
         distinctUntilChanged(),
-        tap((event: KeyboardEvent) => {
-          console.log(event)
-          console.log(this.search.nativeElement.value)
-        })
+        pluck('target','value')
       )
-      .subscribe();
+      .subscribe((e)=>console.log(e));
   }
 }
