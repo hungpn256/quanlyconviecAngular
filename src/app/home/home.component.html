@@ -22,7 +22,7 @@
         <th scope="row">{{ind+1}}</th>
         <td>{{task.name}}</td>
         <td>{{task.description}}</td>
-        <td>{{task.status}}</td>
+        <td><span style="font-size:12px; padding:5px; border-radius:5px" class="text-light {{task.status===0?'bg-secondary':task.status==1?'bg-primary':'bg-success'}}">{{task.status===0?'chưa làm':task.status==1?'đang thực hiện':'đã hoàn thành'}}</span></td>
         <td>
           <div class="btn-group" role="group" aria-label="Basic example">
             <button type="button" class="btn btn-primary" (click)="navigateUpdate(task.id)">Sửa</button>
