@@ -1,1 +1,22 @@
-<p>create-task works!</p>
+<div class="container">
+  <form [formGroup]="form" class="mt-5" (ngSubmit)="submit()">
+    <div class="form-group mt-3">
+      <label for="exampleInputEmail1">Tên công việc</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Tên công việc" formControlName="name">
+      <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+    </div>
+    <div class="form-group mt-3">
+      <label for="exampleInputPassword1">Mô tả</label>
+      <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Mô tả" formControlName="description">
+    </div>
+    <div class="form-group mt-3">
+      <label for="exampleFormControlSelect1">Trạng thái</label>
+      <select formControlName="status" class="form-control" id="exampleFormControlSelect1" >
+        <option [ngValue]=0>chưa làm</option>
+        <option [ngValue]=1>đang thực hiện</option>
+        <option [ngValue]=2>đã làm</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary mt-4">Submit</button>
+  </form>
+</div>

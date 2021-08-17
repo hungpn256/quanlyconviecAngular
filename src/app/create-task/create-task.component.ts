@@ -1,15 +1,58 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { pluck } from 'rxjs/operators';
+import { ITask } from '../model/task.model';
+import {callApi} from '../service/callApi.service'
+import { addTask, updateTask } from '../store/task/task.action';
 @Component({
   selector: 'app-create-task',
   templateUrl: './create-task.component.html',
   styleUrls: ['./create-task.component.scss']
 })
-export class CreateTaskComponent implements OnInit {
+export class CreateTaskComponent implements OnInit,OnDestroy {
+  selectOption:string;
+  form = new FormGroup({
+    name: new FormControl(''),
+    description: new FormControl(''),
+    status: new FormControl(0),
+  });
+  editting = false;
+  constructor(private api:callApi,private readonly store:Store, private router:Router, private route:ActivatedRoute) {
 
-  constructor() { }
+  }
+  ngOnDestroy(): void {
+
+  }
 
   ngOnInit(): void {
+    if(this.route.snapshot.params.id){
+      this.editting = true;
+      this.api.getDetail(this.route.snapshot.params.id).subscribe((res:ITask)=>{
+        this.form.setValue({
+          name:res.name,
+          description:res.description,
+          status:res.status
+        })
+      })
+    }
+
+  }
+  submit(){
+    if(this.route.snapshot.params.id){
+      this.api.updateTask({id:this.route.snapshot.params.id,...this.form.value}).subscribe({
+        next:(data:ITask)=>{
+          this.router.navigate(['/']);
+        }
+      });
+    }else{
+      this.api.postTask(this.form.value).subscribe({
+        next:(data:ITask)=>{
+          this.router.navigate(['/']);
+        }
+      });
+    }
   }
 
 }

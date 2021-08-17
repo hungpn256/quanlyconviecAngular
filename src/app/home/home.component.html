@@ -1,3 +1,4 @@
+
 <div class="container">
   <div class="input-group mb-3 mt-5">
     <input #search type="text" class="form-control" placeholder="Search..." aria-label="Recipient's username" aria-describedby="basic-addon2">
@@ -5,4 +6,30 @@
       <button class="btn btn-primary" type="button">Search</button>
     </div>
   </div>
+
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col">STT</th>
+        <th scope="col">Tên công việc</th>
+        <th scope="col">Mô tả</th>
+        <th scope="col">Trạng thái</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of taskList | async; let ind=index">
+        <th scope="row">{{ind+1}}</th>
+        <td>{{task.name}}</td>
+        <td>{{task.description}}</td>
+        <td>{{task.status}}</td>
+        <td>
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-primary" (click)="navigateUpdate(task.id)">Sửa</button>
+            <button type="button" class="btn btn-danger" (click)="del(task.id)">Xoá</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
