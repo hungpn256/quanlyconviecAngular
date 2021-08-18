@@ -13,6 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { NavComponent } from './components/nav/nav.component';
 import { HttpClientModule } from '@angular/common/http';
 import { taskReducer } from './store/task/task.reducer';
+import { TaskGuard } from './guards/tasks.guard';
 
 @NgModule({
   declarations: [
