@@ -17,7 +17,7 @@
         <th scope="col">Action</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody *ngIf="(taskList | async)?.length > 0">
       <tr *ngFor="let task of taskList | async; let ind=index">
         <th scope="row">{{ind+1}}</th>
         <td>{{task.name}}</td>
@@ -32,4 +32,7 @@
       </tr>
     </tbody>
   </table>
+  <div *ngIf="(taskList | async)?.length === 0">
+    <div class="text-center" style="font-size:24; font-weight: bold;">Không có dữ liệu</div>
+  </div>
 </div>
